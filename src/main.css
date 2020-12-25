@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 1em 5em 3em 10em;
+    text-align: center;
+    color: #D6DFE5;
+    background-color: #2C3942; /*rgb(34, 158, 90), rgb(5, 117, 229)*/
+    /*transition: background-color 1s linear;*/
+}
+
+main {
+    height: 110vh;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+}
+
+p.copyright {
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    line-height: 40px;
+    font-size: 1em;
+    text-align: right;
+    bottom:0;
+}
+
+header {
+    margin-bottom: 5em;
+    text-align: left;
+    width: 100%;
+}
+
+header nav a {
+    color:#D6DFE5;
+    font-size: 1em;
+    margin: 0 1em 0 0;
+    text-decoration: none;
+}
+
+header nav a:nth-child(1){
+    color: #D6DFE5;
+}
+
+header nav a:nth-child(n+2){
+    float: right;
+    text-decoration: underline dotted;
+}
+
+.map {
+    height: 20em;
+    width: 30em;
+    border-radius: 5px;
+}
+
+#display {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+#display p {
+    font-size: 1.5em;
+}
+
+.search-button-style {
+    padding: .5em;
+    height: 2.7em;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #5499C7;
+    color: #D6DFE5;
+}
+
+/*#ip-address (input only) {
+    font-size: 1em;
+    text-decoration: none;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 5px;
+    padding: .5em;
+    margin-right: .5em;
+}*/
+
+#ip-address {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+
+#info ul li {
+    list-style-type: none;
+    text-align: left;
+    margin-bottom: 1em;
+}
+
+#box-container {
+    display: flex;
+    vertical-align: top;
+}
+
+
+#public-ip, #ip-address {
+    display: inline;
+}
+
+#ip-search-input {
+    width: 50%;
+    height: 1em;
+    border-style: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 1em;
+}
+
+#ip-input {
+    width: 10em;
+    height: 1em;
+    border-style: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: .5em;
+}
+
+#ip-input[value] {
+    font-size: .5em;
+}
+
+@media (max-width: 1250px){
+    header nav a:nth-child(1){
+        margin-right: 25%;
+    }
+}
+    
+@media (max-width: 1000px){
+    body {
+        margin: 1em 5em 3em 5em;
+    }
+    main {
+        height: 110%;
+    }
+}
+
+@media (max-width: 750px){
+    body {
+        margin: 0 0 0 .5em;
+    }
+
+    header nav a {
+        font-size: 1rem;
+        margin-left: 0;
+    }
+
+    header nav a:nth-child(1){
+        margin-right: 1em;
+    }
+
+    #display p {
+        display: inline;
+        font-size: 1em;
+    }
+    .map {
+        height: 20em;
+    }
+      footer {
+          margin-top: 5rem;
+      }
+}
+
+@media (max-width: 550px){
+    .map {
+        width: 95%;
+    }
+
+    #box-container {
+        display: block;
+    }
+
+    #ip-address {
+        font-size: 1em;
+    }
+}
