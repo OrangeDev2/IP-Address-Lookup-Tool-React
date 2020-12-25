@@ -91,7 +91,6 @@ header nav a:nth-child(n+2){
 }
 
 
-
 #info ul li {
     list-style-type: none;
     text-align: left;
@@ -108,7 +107,7 @@ header nav a:nth-child(n+2){
     display: inline;
 }
 
-#ip-search-input {
+/*#ip-search-input {
     width: 50%;
     height: 1em;
     border-style: none;
@@ -116,18 +115,15 @@ header nav a:nth-child(n+2){
     padding: 10px;
     margin-right: 1em;
 }
+}*/
 
-#ip-input {
-    width: 10em;
+.search-input {
+    width: 50%;
     height: 1em;
     border-style: none;
     border-radius: 5px;
     padding: 10px;
-    margin-left: .5em;
-}
-
-#ip-input[value] {
-    font-size: .5em;
+    margin-right: 1em;
 }
 
 @media (max-width: 1250px){

@@ -109,7 +109,7 @@ class IPLookUpPage extends Component {
                 <p style={{fontSize: ".8em", marginRight: "1em"}}>IP Address Lookup:</p>
 
                     <input placeholder="156.33.241.5" required
-                    id="ip-search-input"
+                    id="ip-search-input" className="search-input"
                     ></input>
                     <button className="search-button-style" id="ip-search-btn" type="submit">IP Lookup</button>
             </div>

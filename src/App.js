@@ -13,9 +13,11 @@ import {
 
 // Pages 
 import {HomePage} from './pages/home';
+import IPLookUpPage from './pages/ip-lookup';
+import WhoisPage from './pages/whois';
 import AboutPage from './pages/about';
 import ErrorPage from './pages/404';
-import IPLookUpPage from './pages/ip-lookup';
+import DnsLookupPage from './pages/dns-lookup';
 
 class App extends Component {
   render () {
@@ -23,9 +25,11 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={HomePage}/>
+          <Route exact path="/whois" component={WhoisPage}/>
           <Route exact path="/404" component={ErrorPage}/>
           <Route exact path="/about" component={AboutPage}/>
           <Route exact path="/ip-search" component={IPLookUpPage}/>
+          <Route exact path="/dns" component={DnsLookupPage}/>
           <Redirect to="/404" component={ErrorPage}/>
         </Switch>
       </Router>
