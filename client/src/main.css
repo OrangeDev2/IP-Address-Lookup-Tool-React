@@ -5,7 +5,7 @@ body {
     margin: 1em 5em 3em 10em;
     text-align: center;
     color: #D6DFE5;
-    background-color: #2C3942; /*rgb(34, 158, 90), rgb(5, 117, 229)*/
+    background-color: #021528; /*rgb(34, 158, 90), rgb(5, 117, 229)*/
     /*transition: background-color 1s linear;*/
 }
 
@@ -19,7 +19,7 @@ footer {
 }
 
 p.copyright {
-    position: absolute;
+    position: relative;
     width: 100%;
     color: #fff;
     line-height: 40px;
@@ -51,8 +51,8 @@ header nav a:nth-child(n+2){
 }
 
 .map {
-    height: 20em;
-    width: 30em;
+    height: 22em;
+    width: 50%;
     border-radius: 5px;
 }
 
@@ -137,7 +137,7 @@ header nav a:nth-child(n+2){
         margin: 1em 5em 3em 5em;
     }
     main {
-        height: 110%;
+        height: 110vh;
     }
 }
 
@@ -170,6 +170,10 @@ header nav a:nth-child(n+2){
 @media (max-width: 550px){
     .map {
         width: 95%;
+    }
+
+    main {
+        height: 150vh;
     }
 
     #box-container {

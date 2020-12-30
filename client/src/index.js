@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 require('dotenv').config();
 
+
 ReactDOM.render(
   <nav>
     <a href="/" style={{fontWeight: "bold", textDecoration: "none"}}>showip.io</a>
@@ -26,7 +27,7 @@ ReactDOM.render(
 //<p>Made with <a href="https://developers.google.com/maps" target="_blank" rel="noreferrer" style={{color: "white"}}>Google Maps API</a> and <a href="https://ip-geolocation.whoisxmlapi.com/api" target="_blank" rel="noreferrer" style={{color: "white"}}>WhoisXMLAPI</a>  © 2020 showip.io</p>
 
 ReactDOM.render(
-  <p className="copyright" style={{color: "white"}}>© 2020 Showip.io</p>
+  <p className="copyright" style={{color: "white"}}>© 2020 showip.io</p>
   ,
   document.getElementById('footer')
 );

@@ -4,7 +4,7 @@ const { Component } = require("react");
 class WhoisPage extends Component {
     componentDidMount(){
         $("#whois-search-input").on('keypress',function(e) {
-            if(e.which == 13) {
+            if(e.which === 13) {
                 $("#whois-search-btn").trigger("click");
             }
         });

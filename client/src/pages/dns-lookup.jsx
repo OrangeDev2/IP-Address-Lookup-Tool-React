@@ -4,7 +4,7 @@ const { Component } = require("react");
 class DnsLookupPage extends Component {
     componentDidMount(){
         $("#dns-search-input").on('keypress',function(e) {
-            if(e.which == 13) {
+            if(e.which === 13) {
                 $("#dns-search-btn").trigger("click");
             }
         });
