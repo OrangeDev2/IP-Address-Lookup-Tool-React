@@ -4,22 +4,27 @@ const { Component } = require("react");
 export class IPLookUpPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { submitted: false, invalidInput: "", invalidInputColor: "", ipAddressDisplay:"" , ipAddress: "", myCountry: "", myRegion: "", myCity: "", myLat: "", myLng: "", postalCode: "", timeZone: "", ispName: "", connectionType: "" };
+    this.state = { submitted: false, invalidInput: "", invalidInputColor: "", type: "", myCountryCode: "", myCountryFlag: "", myRegionCode: "", geonameID: "", asn: "", ipAddressDisplay:"" , ipAddress: "", myCountry: "", myRegion: "", myCity: "", myLat: "", myLng: "", postalCode: "", timeZone: "", ispName: "", connectionType: "" };
   }
 
     async callAPI(ipAddressParam) {
       axios.get(`http://localhost:8000/geolocation/${ipAddressParam}`)
       .then(result => {
           this.setState({ ipAddress: result.data.ip, 
-                          myCountry: result.data.location.country,
-                          myRegion: result.data.location.region,
-                          myCity: result.data.location.city,
-                          myLat: result.data.location.lat,
-                          myLng:  result.data.location.lng,
-                          postalCode: result.data.location.postalCode,
-                          timeZone: result.data.location.timezone,
-                          ispName: result.data.isp,
-                          connectionType: result.data.connectionType})
+                          type: `(${result.data.type})`,
+                          myCountry: result.data.country_name,
+                          myCountryCode: result.data.country_code,
+                          myCountryFlag: result.data.location.country_flag_emoji,
+                          myRegion: result.data.region_name,
+                          myRegionCode: result.data.region_code,
+                          myCity: result.data.city,
+                          myLat: result.data.latitude,
+                          myLng:  result.data.longitude,
+                          postalCode: result.data.zip,
+                          geonameID: result.data.location.geoname_id,
+                          timeZone: result.data.time_zone.id + ' ' + result.data.time_zone.current_time + ' ' + result.data.time_zone.code,
+                          ispName: result.data.connection.isp,
+                          asn: result.data.connection.asn})
       });
     }
 
@@ -38,7 +43,7 @@ export class IPLookUpPage extends Component {
           let ipAddressValue = inputValue;
           this.callAPI(ipAddressValue);
           this.setState({submitted: true});
-          this.setState({invalidInput: "", invalidInputColor: "#D6DFE5"});
+          this.setState({invalidInput: `You entered "${inputValue}"`, invalidInputColor: "#D6DFE5"});
           event.target.reset();
         }
         else {
@@ -63,15 +68,17 @@ export class IPLookUpPage extends Component {
 
           <div id="info">
             <ul>
-                <li>City: {this.state.myCity ? this.state.myCity : "N/A"}</li>
-                <li>State: {this.state.myRegion ? this.state.myRegion : "N/A"}</li>
-                <li>Country: {this.state.myCountry ? this.state.myCountry : "N/A"}</li>
-                <li>Timezone: {this.state.timeZone ? this.state.timeZone : "N/A"}</li>
-                <li>Latitude: {this.state.myLat ? this.state.myLat : ""}</li>
-                <li>Longitude: {this.state.myLng ? this.state.myLng : ""}</li>
-                <li>Postal Code: {this.state.postalCode ? this.state.postalCode : "N/A"}</li>
-                <li>ISP Name: {this.state.connectionType ? (`${this.state.ispName} (${this.state.connectionType})`) : this.state.ispName}</li>
-                <li>IP Address entered: {this.state.ipAddress ? this.state.ipAddress : ""}</li>
+              <li><span style={{textDecoration: "underline"}}>City</span>: {this.state.myCity ? this.state.myCity : "N/A"}</li>
+              <li><span style={{textDecoration: "underline"}}>State</span>: {this.state.myRegion ? this.state.myRegion : "N/A"}</li>           
+              <li><span style={{textDecoration: "underline"}}>Country</span>: {this.state.myCountry ? this.state.myCountry : "N/A"}</li>        
+              <li><span style={{textDecoration: "underline"}}>Timezone</span>: {this.state.timeZone ? this.state.timeZone : "N/A"}</li>
+              <li><span style={{textDecoration: "underline"}}>Latitude</span>: {this.state.myLat ? this.state.myLat : ""}</li>          
+              <li><span style={{textDecoration: "underline"}}>Longitude</span>: {this.state.myLng ? this.state.myLng : ""}</li>            
+              <li><span style={{textDecoration: "underline"}}>Postal Code</span>: {this.state.postalCode ? this.state.postalCode : "N/A"}</li>               
+              <li><span style={{textDecoration: "underline"}}>ISP Name</span>: {this.state.ispName ? this.state.ispName : "N/A"}</li>
+              <li><span style={{textDecoration: "underline"}}>Geoname ID</span>: {this.state.geonameID ? this.state.geonameID : "N/A"}</li>
+              <li><span style={{textDecoration: "underline"}}>ASN</span>: {this.state.asn ? this.state.asn : "N/A"}</li>
+              <li><span style={{textDecoration: "underline"}}>IP Address entered</span>: {this.state.ipAddress ? this.state.ipAddress : ""}</li>
             </ul>
           </div>
         </div>
@@ -90,6 +97,7 @@ export class IPLookUpPage extends Component {
           map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: myLatitude, lng: myLongitude },
             zoom: 10,
+            mapTypeId: google.maps.MapTypeId.TERRAIN
           });
         }
         initMap();
@@ -97,10 +105,10 @@ export class IPLookUpPage extends Component {
 
         return (
             <div>
-            <div id="display">
+            <div id="display" style={{textAlign: "left"}}>
 
                 <h1>IP Search</h1>
-        <p style={{fontSize: ".8em", marginRight: "1em"}}>IP Address Lookup: <span style={{textDecoration: "underline", color: this.state.invalidInputColor}}>{this.state.invalidInput}</span></p>
+        <p style={{fontSize: ".8em", marginRight: "1em"}}>IP Address Lookup: <span style={{color: this.state.invalidInputColor}}>{this.state.invalidInput}</span></p>
 
                     <form onSubmit={this.mySubmitHandler}>
                       <input type="text" placeholder="8.8.8.8" className="search-input"

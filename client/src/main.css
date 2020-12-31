@@ -5,23 +5,20 @@ body {
     margin: 1em 5em 3em 10em;
     text-align: center;
     color: #D6DFE5;
-    background-color: #021528; /*rgb(34, 158, 90), rgb(5, 117, 229)*/
+    background-color: #021528; /*rgb(34, 158, 90), rgb(5, 117, 229), #021528*/
     /*transition: background-color 1s linear;*/
 }
 
 main {
-    height: 110vh;
+    height: 110%;
 }
 
 footer {
-    position: relative;
     width: 100%;
 }
 
 p.copyright {
-    position: relative;
     width: 100%;
-    color: #fff;
     line-height: 40px;
     font-size: 1em;
     text-align: right;
@@ -29,35 +26,32 @@ p.copyright {
 }
 
 header {
-    margin-bottom: 5em;
-    text-align: left;
+    margin-bottom: 3em;
+    text-align: right;
     width: 100%;
 }
 
 header nav a {
-    color:#D6DFE5;
     font-size: 1em;
     margin: 0 1em 0 0;
     text-decoration: none;
-}
-
-header nav a:nth-child(1){
     color: #D6DFE5;
 }
 
-header nav a:nth-child(n+2){
-    float: right;
-    text-decoration: underline dotted;
+header nav a:nth-child(1){
+    float: left;
+}
+
+header nav a:nth-child(n+2):hover {
+    text-decoration: underline;
 }
 
 .map {
-    height: 22em;
-    width: 50%;
-    border-radius: 5px;
+    height: 27em;
+    width: 35em;
 }
 
 #display {
-    text-align: left;
     margin-bottom: 2rem;
 }
 
@@ -87,7 +81,6 @@ header nav a:nth-child(n+2){
 #ip-address {
     font-size: 1.5em;
     font-weight: bold;
-    text-decoration: underline;
 }
 
 
@@ -128,7 +121,7 @@ header nav a:nth-child(n+2){
 
 @media (max-width: 1250px){
     header nav a:nth-child(1){
-        margin-right: 25%;
+        margin-right: 70vh;
     }
 }
     
@@ -137,7 +130,7 @@ header nav a:nth-child(n+2){
         margin: 1em 5em 3em 5em;
     }
     main {
-        height: 110vh;
+        height: 110%;
     }
 }
 
@@ -173,7 +166,7 @@ header nav a:nth-child(n+2){
     }
 
     main {
-        height: 150vh;
+        height: 150%;
     }
 
     #box-container {

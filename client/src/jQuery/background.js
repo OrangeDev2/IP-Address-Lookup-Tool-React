@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     console.log('Background rgb color logged here: ' + `rgb(${redValue}, ${greenValue}, ${blueValue})`);
 
-    setTimeout(setBackground, 25000);
+    setTimeout(setBackground, 5000);
 }
 setBackground();
 });*/
