@@ -10,7 +10,7 @@ body {
 }
 
 main {
-    height: 110%;
+    height: 130vh;
 }
 
 footer {
@@ -130,7 +130,7 @@ header nav a:nth-child(n+2):hover {
         margin: 1em 5em 3em 5em;
     }
     main {
-        height: 110%;
+        height: 130vh;
     }
 }
 
@@ -166,7 +166,7 @@ header nav a:nth-child(n+2):hover {
     }
 
     main {
-        height: 150%;
+        height: 150vh;
     }
 
     #box-container {
