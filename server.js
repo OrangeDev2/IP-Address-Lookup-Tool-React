@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
   });
 
 app.enable('trust proxy');
-app.set('trust proxy', 'loopback');
+app.set('trust proxy', true);
 
 
 app.get('/geolocation/:ip?', (req, res) => {
@@ -27,9 +27,9 @@ app.get('/geolocation/:ip?', (req, res) => {
 
     if (!req.params.ip){ // no ip address provided.
 
-      let ipAddress = req.ip;
+     let ipAddress = req.ip;
 
-            /*axios.get(`https://api64.ipify.org/?format=json`) // Get User's IP Address.
+           /* axios.get(`https://api64.ipify.org/?format=json`) // Get User's IP Address.
             .then(json => {
                 //console.log(json.data.ip);
                 let ipAddress = json.data.ip;*/
@@ -42,7 +42,7 @@ app.get('/geolocation/:ip?', (req, res) => {
                 .catch(err => {
                     console.log(err);
                 });
-            //});
+           //});
     }
 
     else if (req.params.ip) { // ip address provided
