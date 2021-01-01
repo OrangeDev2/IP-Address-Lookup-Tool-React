@@ -18,16 +18,21 @@ app.use(function(req, res, next) {
     next();
   });
 
+app.enable('trust proxy');
+app.set('trust proxy', 'loopback');
+
 
 app.get('/geolocation/:ip?', (req, res) => {
     //    if (req.params.ip.match(/^(?:(?:2[0-4]\d|25[0-5]|1\d{2}|[1-9]?\d)\.){3}(?:2[0-4]\d|25[0-5]|1\d{2}|[1-9]?\d)(?:\:(?:\d|[1-9]\d{1,3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5]))?$/) || req.params.ip.match(/^(?:^|(?<=\s))(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))(?=\s|$)/)){
 
     if (!req.params.ip){ // no ip address provided.
 
-            axios.get(`https://api64.ipify.org/?format=json`) // Get User's IP Address.
+      let ipAddress = req.ip;
+
+            /*axios.get(`https://api64.ipify.org/?format=json`) // Get User's IP Address.
             .then(json => {
                 //console.log(json.data.ip);
-                let ipAddress = json.data.ip;
+                let ipAddress = json.data.ip;*/
 
                 axios.get(`http://api.ipstack.com/${ipAddress}?access_key=4ee118d18835ef34e8041fe38e81803a&format=1`)
                 .then(json => {
@@ -37,7 +42,7 @@ app.get('/geolocation/:ip?', (req, res) => {
                 .catch(err => {
                     console.log(err);
                 });
-            });
+            //});
     }
 
     else if (req.params.ip) { // ip address provided
