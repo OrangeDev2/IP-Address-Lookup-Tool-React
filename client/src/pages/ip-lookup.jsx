@@ -8,7 +8,7 @@ export class IPLookUpPage extends Component {
   }
 
     async callAPI(ipAddressParam) {
-      axios.get(`http://localhost:8000/geolocation/${ipAddressParam}`)
+      axios.get(`/geolocation/${ipAddressParam}`)
       .then(result => {
           this.setState({ ipAddress: result.data.ip, 
                           type: `(${result.data.type})`,
