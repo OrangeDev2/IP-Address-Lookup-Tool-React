@@ -8,8 +8,8 @@ export class HomePage extends Component {
     }
 
   async callAPI() {
-    //axios.get(`http://localhost:8000/api/geolocation/`)
-    axios.get(`api/geolocation/`)
+    //axios.get(`http://localhost:8000/geolocation/`)
+    axios.get(`/geolocation/`)
     .then(result => {
         this.setState({ ipAddress: result.data.ip, 
                         type: `(${result.data.type})`,
