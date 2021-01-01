@@ -5,14 +5,15 @@ const app = express();
 var path = require('path');
 const { response } = require('express');
 const { default: axios } = require('axios');
-const PORT = 8000;
+var port = process.env.PORT || 5000;
+require('dotenv').config();
 
 app.use(cors());
 
 app.use(express.json());
 
 app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    //res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header(
       'Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept'
@@ -69,7 +70,7 @@ app.get('/*', (req, res) => {
   });
 });
 
-app.listen(PORT, function(){
+app.listen(port, function(){
     console.log('express app listening on port', PORT);
 });
  
