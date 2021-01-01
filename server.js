@@ -58,8 +58,8 @@ app.get('/geolocation/:ip?', (req, res) => {
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'), function(err) {
     if (err) {
       res.status(500).send(err)
     }
