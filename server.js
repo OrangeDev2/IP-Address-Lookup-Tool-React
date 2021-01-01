@@ -5,8 +5,6 @@ const app = express();
 var path = require('path');
 const { response } = require('express');
 const { default: axios } = require('axios');
-var port = process.env.PORT || 5000;
-require('dotenv').config();
 
 app.use(cors());
 
@@ -70,7 +68,9 @@ app.get('/*', (req, res) => {
   });
 });
 
+var port = process.env.PORT || 5000;
+
 app.listen(port, function(){
-    console.log('express app listening on port', PORT);
+    console.log('express app listening on port', port);
 });
  
