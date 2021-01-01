@@ -5,11 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 require('dotenv').config();
 
-/*
-<a href="/dns">DNS Lookup</a>
-    <a href="/whois">WHOIS</a>
-    */
-
 ReactDOM.render(
   <nav>
     <a href="/" style={{fontWeight: "bold", textDecoration: "none"}}>showip.io</a>

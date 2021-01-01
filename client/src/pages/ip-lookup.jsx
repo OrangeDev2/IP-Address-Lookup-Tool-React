@@ -56,7 +56,7 @@ export class IPLookUpPage extends Component {
     /*myChangeHandler = (event) => {
       this.setState({ipAddressDisplay: event.target.value, invalidInputColor: "#D6DFE5"});
 
-      // onChange={this.myChangeHandler} -> Add this to input element if uncommented.
+      //onChange={this.myChangeHandler} -> Add this to input element if uncommented.
     }*/
 
     renderIpInfo(){

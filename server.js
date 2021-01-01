@@ -44,7 +44,7 @@ app.get('/geolocation/:ip?', (req, res) => {
                 });
            //});
     }
-
+    
     else if (req.params.ip) { // ip address provided
 
             let ipAddress = req.params.ip;
