@@ -1,6 +1,9 @@
 {
   "name": "showip-express-server",
   "version": "1.0.0",
+  "engines": {
+    "node": "15.x"
+  },
   "scripts": {
     "heroku-postbuild": "cd client && npm install && npm run build",
     "server": "node server.js",
