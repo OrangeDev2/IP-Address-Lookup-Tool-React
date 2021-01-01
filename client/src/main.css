@@ -131,7 +131,7 @@ header nav a:nth-child(n+2):hover {
 
 @media (max-width: 750px){
     body {
-        margin: 0 0 0 .5em;
+        margin: 5px 0 0 .5em;
     }
 
     header nav a {
