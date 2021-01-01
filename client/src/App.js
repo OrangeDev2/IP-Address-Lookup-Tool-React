@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './main.css';
-import './jQuery/background.js';
 
 import {
   BrowserRouter as Router,
