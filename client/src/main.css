@@ -10,11 +10,15 @@ body {
 }
 
 main {
-    height: 110vh;
+    min-height: 100vh;
+    margin-bottom: 5em;
 }
 
 footer {
+    padding: 1em;
+    height: 5em;
     width: 100%;
+    bottom: 0;
 }
 
 p.copyright {
@@ -28,6 +32,7 @@ p.copyright {
 header {
     text-align: right;
     width: 100%;
+    margin-bottom: 5em;
 }
 
 header nav a {
@@ -135,7 +140,7 @@ header nav a:nth-child(n+2):hover {
     }
 
     header nav a:nth-child(1){
-        margin-right: 70vw;
+        margin-right: 50%;
     }
 
     #display p {
@@ -151,6 +156,22 @@ header nav a:nth-child(n+2):hover {
 }
 
 @media (max-width: 550px){
+    header nav a:nth-child(1){
+        margin-right: 30%;
+    }
+    .map {
+        width: 95%;
+    }
+
+    #box-container {
+        display: block;
+    }
+}
+
+@media (max-width: 320px){
+    header nav a:nth-child(1){
+        margin-right: 0;
+    }
     .map {
         width: 95%;
     }

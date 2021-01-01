@@ -108,7 +108,7 @@ export class IPLookUpPage extends Component {
             <div id="display" style={{textAlign: "left"}}>
 
                 <h1>IP Search</h1>
-        <p style={{fontSize: ".8em", marginRight: "1em"}}>IP Address Lookup: <span style={{color: this.state.invalidInputColor}}>{this.state.invalidInput}</span></p>
+        <p style={{fontSize: ".8em", marginRight: "1em", height: "100%"}}>IP Address Lookup: <span style={{color: this.state.invalidInputColor}}>{this.state.invalidInput}</span></p>
 
                     <form onSubmit={this.mySubmitHandler}>
                       <input type="text" placeholder="8.8.8.8" className="search-input"
