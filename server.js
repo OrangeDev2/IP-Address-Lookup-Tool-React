@@ -1,9 +1,12 @@
+import sslRedirect from 'heroku-ssl-redirect';
 const { strict } = require('assert');
 const express = require('express');
 const cors = require('cors');
 const app = express();
 var path = require('path');
 const { default: axios } = require('axios');
+
+app.use(sslRedirect());
 
 app.use(cors());
 
@@ -29,34 +32,28 @@ app.get('/geolocation/:ip?', (req, res) => {
 
      let ipAddress = req.ip;
 
-           /* axios.get(`https://api64.ipify.org/?format=json`) // Get User's IP Address.
-            .then(json => {
-                //console.log(json.data.ip);
-                let ipAddress = json.data.ip;*/
-
-                axios.get(`http://api.ipstack.com/${ipAddress}?access_key=4ee118d18835ef34e8041fe38e81803a&format=1`)
-                .then(json => {
-                    //console.log(json.data);
-                    res.send(json.data);
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-           //});
+      axios.get(`http://api.ipstack.com/${ipAddress}?access_key=4ee118d18835ef34e8041fe38e81803a&format=1`)
+      .then(json => {
+          //console.log(json.data);
+          res.send(json.data);
+      })
+      .catch(err => {
+          console.log(err);
+      });
     }
     
     else if (req.params.ip) { // ip address provided
 
-            let ipAddress = req.params.ip;
+        let ipAddress = req.params.ip;
 
-            axios.get(`http://api.ipstack.com/${ipAddress}?access_key=4ee118d18835ef34e8041fe38e81803a&format=1`)
-            .then(json => {
-                //console.log(json.data);
-                res.send(json.data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        axios.get(`http://api.ipstack.com/${ipAddress}?access_key=4ee118d18835ef34e8041fe38e81803a&format=1`)
+        .then(json => {
+            //console.log(json.data);
+            res.send(json.data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
 });
@@ -64,22 +61,11 @@ app.get('/geolocation/:ip?', (req, res) => {
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 app.get('*', (req, res) => {
-  if (!req.secure) { // not https
-    res.redirect(301, 'https://' + req.hostname + req.originalUrl);
-    console.log('Redirected https to http!'); 
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
       if (err) {
         res.status(500).send(err)
       }
     });
-} else {
-    console.log('Already https://');
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
-      if (err) {
-        res.status(500).send(err)
-      }
-    });
-  }
 });
 
 var port = process.env.PORT || 8000;
