@@ -24,7 +24,7 @@ ReactDOM.render(
 //<p>Made with <a href="https://developers.google.com/maps" target="_blank" rel="noreferrer" style={{color: "white"}}>Google Maps API</a> and <a href="https://ip-geolocation.whoisxmlapi.com/api" target="_blank" rel="noreferrer" style={{color: "white"}}>WhoisXMLAPI</a>  © 2020 showip.io</p>
 
 ReactDOM.render(
-  <p className="copyright" style={{color: "#D6DFE5"}}>© 2020 showip.io</p>
+  <p className="copyright" style={{color: "#D6DFE5"}}>© 2021 showip.io</p>
   ,
   document.getElementById('footer')
 );
