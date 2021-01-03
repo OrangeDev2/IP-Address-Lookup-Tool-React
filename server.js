@@ -1,20 +1,10 @@
-import sslRedirect from 'heroku-ssl-redirect';
-import { strict } from 'assert';
-import express from 'express';
-import cors from 'cors';
-import { axios } from 'axios';
-import path from 'path';
-
-const app = express();
-
-/*
+const sslRedirect = require('heroku-ssl-redirect');
 const { strict } = require('assert');
 const express = require('express');
 const cors = require('cors');
 const app = express();
 var path = require('path');
 const { default: axios } = require('axios');
-*/
 
 app.use(sslRedirect());
 
