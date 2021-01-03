@@ -1,12 +1,9 @@
-var sslRedirect = require('heroku-ssl-redirect');
 const { strict } = require('assert');
 const express = require('express');
 const cors = require('cors');
 const app = express();
 var path = require('path');
 const { default: axios } = require('axios');
-
-app.use(sslRedirect(['production'], 301));
 
 app.use(cors());
 
@@ -61,11 +58,16 @@ app.get('/geolocation/:ip?', (req, res) => {
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 app.get('*', (req, res) => {
+  if (req.headers['x-forwarded-proto'] != 'https' && process.env.NODE_ENV === "production") {
+    res.redirect('https://showip.io' + req.url);
+  }
+  else {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
       if (err) {
         res.status(500).send(err)
       }
     });
+  }
 });
 
 var port = process.env.PORT || 8000;
