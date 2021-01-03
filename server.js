@@ -1,4 +1,4 @@
-const sslRedirect = require('heroku-ssl-redirect');
+var sslRedirect = require('heroku-ssl-redirect');
 const { strict } = require('assert');
 const express = require('express');
 const cors = require('cors');
@@ -6,7 +6,7 @@ const app = express();
 var path = require('path');
 const { default: axios } = require('axios');
 
-app.use(sslRedirect());
+app.use(sslRedirect(['production'], 301));
 
 app.use(cors());
 
