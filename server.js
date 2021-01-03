@@ -21,16 +21,6 @@ app.use(function(req, res, next) {
 app.enable('trust proxy');
 app.set('trust proxy', true);
 
-app.use(express.static(path.join(__dirname, 'client', 'build')));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
-      if (err) {
-        res.status(500).send(err)
-      }
-    });
-});
-
 app.get('/geolocation/:ip?', (req, res) => {
     if (!req.params.ip){ // no ip address provided.
 
@@ -60,6 +50,16 @@ app.get('/geolocation/:ip?', (req, res) => {
         });
     }
 
+});
+
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    });
 });
 
 var port = process.env.PORT || 8000;
