@@ -67,16 +67,19 @@ app.get('*', (req, res) => {
   if (!req.secure) { // not https
     res.redirect(301, 'https://' + req.hostname + req.originalUrl);
     console.log('Redirected https to http!'); 
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    });
 } else {
     console.log('Already https://');
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    });
   }
-})
-.then(function(){
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  });
 });
 
 var port = process.env.PORT || 8000;
