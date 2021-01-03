@@ -1,7 +1,6 @@
 {
   "name": "showip-express-server",
   "version": "1.0.0",
-  "type": "module",
   "engines": {
     "node": "15.x"
   },
