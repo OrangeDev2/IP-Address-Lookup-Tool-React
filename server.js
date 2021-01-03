@@ -64,6 +64,14 @@ app.get('/geolocation/:ip?', (req, res) => {
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 app.get('*', (req, res) => {
+  if (!req.secure) { // not https
+    res.redirect(301, 'https://' + req.hostname + req.originalUrl);
+    console.log('Redirected https to http!'); 
+} else {
+    console.log('Already https://');
+  }
+})
+.then(function(){
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), function(err) {
     if (err) {
       res.status(500).send(err)
